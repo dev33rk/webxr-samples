@@ -264,6 +264,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           // Load multiple audio sources.
           Promise.all([
             createAudioSource({
+              url: 'media/sound/180/top_180.ogg',
+              position: [0, 3, 0],
+              rotateY: 0
+            }),
+            createAudioSource({
+              url: 'media/sound/180/bottom_180.ogg',
+              position: [0, -3, 0],
+              rotateY: 0
+            }),
+            createAudioSource({
               url: 'media/sound/180/front_180.ogg',
               position: [0, DEFAULT_HEIGHT, -1],
               rotateY: 0
