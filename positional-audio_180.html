@@ -63,6 +63,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         let polyfill = new WebXRPolyfill();
       }
 
+      const DEFAULT_DISTANCE = 6;
       const DEFAULT_HEIGHT = 0;
       const ANALYSER_FFT_SIZE = 1024;
 
@@ -265,32 +266,32 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           Promise.all([
             createAudioSource({
               url: 'media/sound/180/top_180.ogg',
-              position: [0, 3, 0],
+              position: [0, -DEFAULT_DISTANCE, 0],
               rotateY: 0
             }),
             createAudioSource({
               url: 'media/sound/180/bottom_180.ogg',
-              position: [0, -3, 0],
+              position: [0, DEFAULT_DISTANCE, 0],
               rotateY: 0
             }),
             createAudioSource({
               url: 'media/sound/180/front_180.ogg',
-              position: [0, DEFAULT_HEIGHT, -1],
+              position: [0, DEFAULT_HEIGHT, -DEFAULT_DISTANCE],
               rotateY: 0
             }),
             createAudioSource({
               url: 'media/sound/180/left_180.ogg',
-              position: [-1, DEFAULT_HEIGHT, 0],
+              position: [-DEFAULT_DISTANCE, DEFAULT_HEIGHT, 0],
               rotateY: Math.PI * 0.5
             }),
             createAudioSource({
               url: 'media/sound/180/right_180.ogg',
-              position: [1, DEFAULT_HEIGHT, 0],
+              position: [DEFAULT_DISTANCE, DEFAULT_HEIGHT, 0],
               rotateY: Math.PI * -0.5
             }),
             createAudioSource({
               url: 'media/sound/180/back_180.ogg',
-              position: [0, DEFAULT_HEIGHT, 1],
+              position: [0, DEFAULT_HEIGHT, DEFAULT_DISTANCE],
               rotateY: 0
             }),
           ]).then((sources) => {
