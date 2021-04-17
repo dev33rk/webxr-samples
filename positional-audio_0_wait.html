@@ -113,7 +113,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       };
       resonance.setRoomProperties(roomDimensions, roomMaterials);*/
 
-      function createAudioSource(options, delay) {
+      function createAudioSource(options) {
         // Create a Resonance source and set its position in space.
         let source = resonance.createSource();
         let pos = options.position;
@@ -125,8 +125,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         analyser.fftSize = ANALYSER_FFT_SIZE;
         analyser.lastRMSdB = 0;
 
-        await sleep(delay);
-        return fetch(options.url)
+        return await fetch(options.url)
           .then((response) => response.arrayBuffer())
           .then((buffer) => audioContext.decodeAudioData(buffer))
           .then((decodedBuffer) => {
@@ -268,17 +267,17 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               url: 'http://127.0.0.1:12345/webxr-samples/media/sound/guitar.ogg',
               position: [0, DEFAULT_HEIGHT, -1],
               rotateY: 0
-            }, 0),
+            }),
             createAudioSource({
               url: 'http://127.0.0.1:12345/webxr-samples/media/sound/drums.ogg',
               position: [-1, DEFAULT_HEIGHT, 0],
               rotateY: Math.PI * 0.5
-            }, 5),
+            }),
             createAudioSource({
               url: 'http://127.0.0.1:12345/webxr-samples/media/sound/perc.ogg',
               position: [1, DEFAULT_HEIGHT, 0],
               rotateY: Math.PI * -0.5
-            }, 10),
+            }),
           ]).then((sources) => {
             audioSources = sources;
 
