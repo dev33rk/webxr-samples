@@ -113,7 +113,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       };
       resonance.setRoomProperties(roomDimensions, roomMaterials);*/
 
-      function createAudioSource(options) {
+      async function createAudioSource(options) {
         // Create a Resonance source and set its position in space.
         let source = resonance.createSource();
         let pos = options.position;
@@ -125,7 +125,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         analyser.fftSize = ANALYSER_FFT_SIZE;
         analyser.lastRMSdB = 0;
 
-        return await fetch(options.url)
+        const response = await fetch(options.url)
           .then((response) => response.arrayBuffer())
           .then((buffer) => audioContext.decodeAudioData(buffer))
           .then((decodedBuffer) => {
@@ -142,6 +142,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               node: null
             };
           });
+        return response;
       }
 
       function createBufferSource(source, buffer, analyser) {
