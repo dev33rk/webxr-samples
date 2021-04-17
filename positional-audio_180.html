@@ -63,7 +63,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         let polyfill = new WebXRPolyfill();
       }
 
-      const DEFAULT_HEIGHT = 1.5;
+      const DEFAULT_HEIGHT = 0;
       const ANALYSER_FFT_SIZE = 1024;
 
       // XR globals.
@@ -277,6 +277,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               url: 'media/sound/180/right_180.ogg',
               position: [1, DEFAULT_HEIGHT, 0],
               rotateY: Math.PI * -0.5
+            }),
+            createAudioSource({
+              url: 'media/sound/180/back_180.ogg',
+              position: [0, DEFAULT_HEIGHT, 1],
+              rotateY: 0
             }),
           ]).then((sources) => {
             audioSources = sources;
