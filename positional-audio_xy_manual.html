@@ -469,8 +469,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
         scene.drawXRFrame(frame, pose);
 
+        let milliSec = new Date().getTime();
+        let globalRotY = 3.14159 * 2 * (milliSec % ROTATE_DURATION) / ROTATE_DURATION;
+
         if (pose) {
-          resonance.setListenerFromMatrix({ elements: pose.transform.matrix });
+          let poseMatrix = pose.transform.matrix;
+          mat4.rotateY(poseMatrix, poseMatrix, globalRotY);
+          resonance.setListenerFromMatrix({ elements: poseMatrix });
         }
 
         scene.endFrame();
