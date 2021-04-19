@@ -207,7 +207,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
           // Move the node to the right location.
           mat4.identity(matrix);
-          matr.rotateY(matrix, matrix, globalRotY);
+          mat4.rotateY(matrix, matrix, globalRotY);
           mat4.translate(matrix, matrix, source.position);
           mat4.rotateY(matrix, matrix, source.rotateY);
 
